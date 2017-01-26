@@ -1,9 +1,23 @@
 version: "3"
 services:
-  mqtt_slave:
+  mqtt:
+    networks:
+      - proxy
+      - default
     deploy:
       mode: replicated
-      replicas: 6
+      replicas: 2
+      labels:
+        - com.df.notify=true
+        - com.df.distribute=true
+        - com.df.serviceDomain.1=mqtt.p.cns.me
+        - com.df.port.1=8080
+        - com.df.servicePath.1=/
+        - com.df.serviceDomain.2=mqtt-http.p.cns.me
+        - com.df.port.2=8888
+        - com.df.servicePath.2=/
+        - com.df.reqMode.3=tcp
+        - com.df.port.3=1883
       resources:
         limits:
           cpus: '0.50'
@@ -22,10 +36,16 @@ services:
         max_failure_ratio: 0.3
     ports:
       - 1883:1883 # MQTT
-      - 8080:8080 # MQTT WebSockets
-      - 8888:8888 # HTTP
+#      - 8080:8080 # MQTT WebSockets
+#      - 8888:8888 # HTTP
     image: chrisns/docker-vernemq:mergedhacks
     environment:
-      - PEER_DISCOVERY_NAME=mqtt_slave
+      - PEER_DISCOVERY_NAME=mqtt
       - DOCKER_VERNEMQ_ALLOW_ANONYMOUS=on
       - DOCKER_VERNEMQ_ALLOW_MULTIPLE_SESSIONS=on
+
+networks:
+  default:
+    external: false
+  proxy:
+    external: true
