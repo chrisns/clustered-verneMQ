@@ -16,6 +16,8 @@ services:
         - com.df.reqPathReplace.1='/'
         - com.df.port.2=8888
         - com.df.servicePath.2=/
+        - com.df.redirectWhenHttpProto=true
+        - com.df.xForwardedProto=true
       resources:
         limits:
           cpus: '0.50'
