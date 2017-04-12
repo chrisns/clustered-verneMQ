@@ -10,11 +10,11 @@ services:
         - com.df.notify=true
         - com.df.distribute=true
         - com.df.serviceDomain=mqtt.p.cns.me
-        - com.df.port.1=8080
+        - com.df.port.1=8888
         - com.df.servicePath.1=/
         - com.df.reqPathSearch.1='/api/'
         - com.df.reqPathReplace.1='/'
-        - com.df.port.2=8888
+        - com.df.port.2=8080
         - com.df.servicePath.2=/
         - com.df.redirectWhenHttpProto=true
         - com.df.xForwardedProto=true
