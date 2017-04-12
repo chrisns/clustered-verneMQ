@@ -5,8 +5,7 @@ services:
       - proxy
       - default
     deploy:
-      mode: replicated
-      replicas: 2
+      mode: global
       labels:
         - com.df.notify=true
         - com.df.distribute=true
