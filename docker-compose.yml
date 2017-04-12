@@ -13,7 +13,7 @@ services:
         - com.df.srcPort.1=80
         - com.df.port.1=8080
         - com.df.servicePath.1=/
-        - com.df.serviceDomain.2=http.mqtt.p.cns.me
+        - com.df.serviceDomain.2=http-mqtt.p.cns.me
         - com.df.srcPort.2=80
         - com.df.port.2=8888
         - com.df.servicePath.2=/
