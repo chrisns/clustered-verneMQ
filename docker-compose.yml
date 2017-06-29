@@ -5,8 +5,8 @@ services:
       - proxy
       - default
     volumes:
-      - data/vmq.passwd:/etc/vernemq/vmq.passwd
-      - data/vmq.acl:/etc/vernemq/vmq.acl
+      - data:/data
+    command: "cp /data/vmq* /etc/vernemq/ && start_vernemq"
     deploy:
       mode: global
       labels:
