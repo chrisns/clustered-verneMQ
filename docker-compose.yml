@@ -16,8 +16,8 @@ services:
         - com.df.port.1=8888
         - com.df.srcPort.1=8888
         - com.df.servicePath.1=/
-        - com.df.reqPathSearch.1='/api/'
-        - com.df.reqPathReplace.1='/'
+        - com.df.reqPathSearch.1=/api/
+        - com.df.reqPathReplace.1=/
         - com.df.port.2=8080
         - com.df.srcPort.2=8080
         - com.df.servicePath.2=/
