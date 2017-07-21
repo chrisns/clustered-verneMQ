@@ -7,6 +7,7 @@ services:
     volumes:
       - data:/data
     command: "cp /data/vmq* /etc/vernemq/ && start_vernemq"
+    read_only: true
     deploy:
       mode: global
       labels:
