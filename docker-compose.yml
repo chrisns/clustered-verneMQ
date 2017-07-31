@@ -24,7 +24,6 @@ services:
         - com.df.srcPort.2=8080
         - com.df.servicePath.2=/
         - com.df.httpsOnly=true
-        - com.df.redirectWhenHttpProto=true
         - com.df.xForwardedProto=true
       resources:
         limits:
