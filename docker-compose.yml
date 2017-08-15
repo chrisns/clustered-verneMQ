@@ -2,8 +2,10 @@ version: "3"
 services:
   mqtt:
     networks:
-      - proxy
-      - default
+      proxy:
+      default:
+        aliases:
+          - mymqtt
     volumes:
       - data:/data
     deploy:
@@ -46,7 +48,7 @@ services:
 #      - 8888:8888 # HTTP
     image: pinked/docker-vernemq
     environment:
-      - PEER_DISCOVERY_NAME=mqtt
+      - PEER_DISCOVERY_NAME=mymqtt
       - DOCKER_VERNEMQ_ALLOW_MULTIPLE_SESSIONS=on
       - DOCKER_VERNEMQ_QUEUE_DELIVER_MODE=balance
 
@@ -58,4 +60,7 @@ networks:
 
 volumes:
   data:
-    driver: glusterfs
+    external:
+      name: mqtt_data
+#
+#    driver: glusterfs
