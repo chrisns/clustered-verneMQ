@@ -6,10 +6,8 @@ services:
       - default
     volumes:
       - data:/data
-    command: "cp /data/vmq* /etc/vernemq/ && start_vernemq"
-    read_only: true
     deploy:
-      mode: global
+      replicas: 4
       labels:
         - com.df.notify=true
         - com.df.distribute=true
@@ -31,16 +29,17 @@ services:
           memory: 256M
         reservations:
           cpus: '0.10'
-          memory: 32M
+          memory: 96M
       restart_policy:
         condition: any
         delay: 5s
       update_config:
         parallelism: 1
-        delay: 10s
+        delay: 30s
         failure_action: pause
-        monitor: 60s
+        monitor: 30s
         max_failure_ratio: 0.3
+    stop_grace_period: 30s
     ports:
       - 1883:1883 # MQTT
 #      - 8080:8080 # MQTT WebSockets
